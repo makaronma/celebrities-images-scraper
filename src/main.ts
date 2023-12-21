@@ -30,7 +30,7 @@ const scrapePage = async (
     );
   });
 
-  const outDir = `./out/${celebrityName}/${pageIdx}`;
+  const outDir = `./out`;
   createDirIfNotExist(outDir);
 
   // ------- Download Img -------
@@ -38,14 +38,14 @@ const scrapePage = async (
     const url = result[i];
     if (!url) continue;
     // console.log(url);
-    await downloadImage(url, `${outDir}/${i}.jpg`);
+    await downloadImage(url, `${outDir}/${celebrityName}-${pageIdx}-${i}.jpg`);
   }
 
   browser.close();
 };
 
 // ===================== Constants =====================
-const PAGE_TO_SCRAPE = 3;
+const PAGE_TO_SCRAPE = 2;
 const BASE_URLS: Record<string, string> = {
   "elon-musk":
     "https://www.gettyimages.hk/%E5%9C%96%E7%89%87/elon-musk?assettype=image&family=editorial&phrase=elon%20musk&sort=best",
